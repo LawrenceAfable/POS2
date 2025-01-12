@@ -1,0 +1,31 @@
+navbar/
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- Logo on the left -->
+    <a class="navbar-brand" href="#">{{ config('app.name') }}</a>
+
+    <!-- Toggler Button (for mobile view) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links on the right -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto"> <!-- ms-auto aligns the navbar to the right -->
+        <li class="nav-item">
+          <!-- Display logged-in user's name -->
+          <p class="nav-link mb-0">{{ Auth::user()->name }}</p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('users.profile') }}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+            @csrf
+            <button type="submit" class="btn btn-danger nav-link" style="padding: 5px 20px; border: none; background-color: #dc3545; color: white; font-size: 16px;">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
